@@ -1,0 +1,371 @@
+@charset 'UTF-8';
+
+/*
+Theme Name: My Theme
+Author: Seiji Nishimura 101
+Description: This is my original theme.
+Version: 1.0
+*/
+
+/*余白、フォント*/
+body{
+    margin:0;
+    
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    /*
+    font-weight: <weight>;
+    font-style: normal;
+    */
+
+    /*行間*/
+    line-height: 1.5;
+}
+
+/*タイトル、ボタンリスト*/
+  .title1{
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .search-list{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .search-list__item {
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    border-radius: initial;
+    border: none;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .search-list__item.is-active {
+    text-decoration: underline rgb(0, 255, 170) 3px;
+    text-underline-offset: 7px;
+    background-color: rgba(0, 242, 250, 0.5);
+  }
+
+  .search-list__item:hover{
+    background-color: rgb(0, 192, 250, 0.5);
+  }
+
+/*レイアウト*/
+  .grid-item.is-hide {
+    display: none;
+  }
+
+  .grid {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+
+  /*
+  .grid a{
+    text-decoration: none;
+  }
+  */
+
+  /*各投稿ページは中央揃え*/
+  .single1{
+    text-align: center;
+  }
+
+  .single2{
+    text-align: left;
+  }
+
+  /* fluid 4 columns */
+  .grid-item{
+    width: 250px;
+    
+    /*縦並び*/
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    
+    height: 300px;
+
+    /*下方に余白*/
+    margin-bottom:50px;
+  }
+
+  .grid-item h1{
+    text-align: center;
+  }
+
+  .grid-item img {
+    width: 200px;
+    /*height: 133.3px;*/
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  li{
+    list-style-type: none;
+  }
+
+  /*ニュースページはGrid-itemを別にする（縦一列に表示）*/
+  .grid-item2{
+    width: 1000px;
+    
+    /*縦並び*/
+    display:flex;
+    flex-flow: column;
+    align-items: left;
+    
+    height: 100px;
+
+    /*下方に余白*/
+    margin-bottom:50px;
+  }
+
+  .grid-item2 h1{
+    text-align: left;
+  }
+
+/*メディアクエリ*/
+@media screen and (max-width: 1000px) {
+  .grid {
+    width: 750px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .grid {
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .grid {
+    width: 250px;
+    margin: 0 auto;
+  }
+}
+
+/*検索フォーム*/
+#searchform {
+    margin-top: 20px;
+     /*縦並び*/
+     display:flex;
+     align-items: center;
+}
+
+#searchform button {
+    top: 8px;
+    right: 12px;
+    margin-left: 20px;
+}
+
+/*天気予報*/
+.weather{
+  max-width:600px;
+  padding-bottom: 100px;
+}
+
+/*copy_right*/
+.copy-right{
+  text-align: right;
+  padding-right: 40px;
+}
+
+/*ハンバーガーメニュー*/
+.header {
+  /*position: sticky;*/
+  position: sticky; /* headerを追従にする */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  margin-top: 20px;
+  /*影つけるか検討*/
+  /*
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  */
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.logo {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.subtitle1{
+  text-align: center;
+}
+
+/* ハンバーガーボタンのデザイン */
+.drawer__button {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999; /* メニューを開いている時もクリックできるよう設定 */
+
+  margin-right: 20px;
+}
+/* ハンバーガーボタン内の線 */
+.drawer__button > span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2px;
+  background-color: black;
+  transform: translateX(-50%);
+}
+.drawer__button > span:first-child {
+  transform: translate(-50%, calc(-50% - 0.5rem));
+  transition: transform 0.3s ease;
+}
+.drawer__button > span:nth-child(2) {
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+.drawer__button > span:last-child {
+  transform: translate(-50%, calc(-50% + 0.5rem));
+  transition: transform 0.3s ease;
+}
+
+/* 展開時のデザイン */
+.drawer__button.active > span:first-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.drawer__button.active > span:nth-child(2) {
+  /* 変更：0 -> 1.0 */
+  opacity: 1.0;
+}
+.drawer__button.active > span:last-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* メニューのデザイン */
+.drawer__nav {
+  position: fixed; /* 追従ヘッダーなどでも表示できるよう設定しておく */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.drawer__nav__inner {
+  position: relative;
+  width: 15%;
+  height: 100%;
+  background-color: white;
+  padding: 4rem 1.5rem 1rem;
+  margin: 0 0 0 auto;
+  overflow: scroll;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+.drawer__nav__menu {
+  list-style: none;
+  padding-left: 0;
+}
+.drawer__nav__link {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 1rem 1rem;
+  /*border-bottom: solid 1px lightgray;*/
+}
+
+/* 展開時のデザイン */
+.drawer__nav.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer__nav.active .drawer__nav__inner {
+  transform: translateX(0);
+}
+
+/*フッター*/
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: -8000;
+}
+
+
+/* スライダー全体 */
+.slide-items {
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-items img {
+  height: 525px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/*URLリンクで下線アニメ*/
+a {
+  color: inherit;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+a {
+  background:
+    linear-gradient(
+      to right,
+      rgb(255, 255, 255),
+      rgb(255, 255, 255)
+    ),
+    linear-gradient(
+      to right,
+      rgb(0, 255, 242),
+      rgb(1, 255, 191),
+      rgb(0, 255, 76)
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 50% 50%, 0 80%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+a:hover {
+  background-size: 0 3px, 100% 3px;
+}
+
+.homeurl1 {
+  letter-spacing: 0.3em; /* 字間の設定 */
+  transition: letter-spacing 0.3s;
+}
+
+.homeurl1:hover {
+  color:rgba(0, 242, 250, 0.5);
+  text-decoration: underline rgba(0, 242, 250, 0.5) 3px;
+  text-underline-offset: 7px;  
+  letter-spacing: 1.0em; /* 字間の設定 */
+}
