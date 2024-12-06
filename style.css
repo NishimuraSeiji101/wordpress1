@@ -306,6 +306,7 @@ body{
 
 /*フッター*/
 footer {
+  margin-top: 200px;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -319,11 +320,11 @@ footer {
 .slide-items {
   margin-top: 50px;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 
 .slide-items img {
-  height: 525px;
+  height: 400px;
   width: 100%;
   object-fit: cover;
 }
